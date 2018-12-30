@@ -1,0 +1,23 @@
+<mat-toolbar role="heading">
+  <mat-icon>whatshot</mat-icon>
+  <span>
+    Xchange
+  </span>
+  <span class="fill-space"></span>
+  <button *ngIf="user === null" mat-raised-button (click)="popupLoginForm()">Login</button>
+  <img *ngIf="user != null" class="usericon" (error)="loadDefaultImg()" [src]="user.picture" [matMenuTriggerFor]="menu">
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/booking">
+      <mat-icon>book</mat-icon>
+      My Bookings
+    </button>
+    <button mat-menu-item routerLink="/profile">
+      <mat-icon>perm_identity</mat-icon>
+      Edit Profile
+    </button>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </button>
+  </mat-menu>
+</mat-toolbar>

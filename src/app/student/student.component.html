@@ -1,0 +1,31 @@
+<mat-card class=container>
+  <mat-card-header>
+    <mat-card-title>Teachers</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+    <mat-card *ngFor="let item of tutors" class="example-card">
+      <mat-card-header>
+        <img mat-card-avatar class="example-header-image" src="{{item.picture}}" onError="this.src='assets/images/abstract-user.png';">
+        <mat-card-title>{{item.name}}</mat-card-title>
+        <mat-card-subtitle>{{item.email}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="card-content">
+        <img class="card-img" mat-card-image src="{{item.picture}}" onError="this.src='assets/images/abstract-user.png';">
+        <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let subject of item.subjects">
+            Subject : {{subject.subject_name}} , Level : {{subject.level}} , Price : $ {{subject.charge_per_hour}} /
+            Hour
+            <mat-divider></mat-divider>
+          </mat-list-item>
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions>
+        <button class="card-btn" mat-button
+        matBadge="{{item.rating}}" matBadgePosition="before" matBadgeColor="accent" 
+        (click)="like(item.tutor_id)">LIKE</button>
+        <button class="card-btn" mat-button>SHARE</button>
+        <button class="card-btn" mat-button (click)="appoint(item)">Make Appointment</button>
+      </mat-card-actions>
+    </mat-card>
+  </mat-card-content>
+</mat-card>

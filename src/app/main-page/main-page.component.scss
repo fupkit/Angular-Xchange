@@ -1,0 +1,21 @@
+@import "../../styles.scss";
+.main{
+    display:flex;
+    flex: 0 1;
+    width: 100%;
+}
+.div-btn {
+    flex: 1;
+    background-color:$secondary;
+    margin: 5px;
+    height: 800px;
+    width: 45%;
+    font-size: 50px;
+    font-style: bold;
+    color:white;
+}
+mat-icon{
+    width: 100px;
+    height: 100px;
+    font-size: 100px;
+}

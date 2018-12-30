@@ -1,0 +1,34 @@
+<div>
+  <form [formGroup]="appointmentForm">
+    <h4>Subject: </h4>
+
+    <mat-radio-group class="radio-group" formControlName="subject">
+      <mat-radio-button class="radio-button" *ngFor="let s of subjects" [value]="s.subject_id">
+        {{s.subject_name}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <br />
+    <h4>Appointment Date: </h4>
+    <mat-form-field>
+      <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="picker" placeholder="Appointment Date" [value]="date" formControlName="date"
+        (dateChange)="selectDate($event)">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br />
+    <h4>Available Time Slot: </h4>
+    <mat-button-toggle-group multiple name="fontStyle" aria-label="Font Style" formControlName="timeslot">
+      <mat-button-toggle *ngFor="let time of timeslots" [value]="time.id"
+      fxFlex fxLayoutAlign="center center">
+        {{time.slot}}
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+
+  
+
+
+    <div mat-dialog-actions>
+      <button class="btn" mat-stroked-button (click)="action()">Make Appointment</button>
+    </div>
+  </form>
+</div>

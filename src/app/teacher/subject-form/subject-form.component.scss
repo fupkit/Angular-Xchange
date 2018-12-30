@@ -1,0 +1,11 @@
+@import "../../../styles.scss";
+.mat-dialog-actions{
+    margin-bottom: -15px !important;
+}
+mat-form-field {
+    width: 95%;
+}
+.mat-stroked-button{
+    color: $secondary;
+}
+

@@ -1,0 +1,22 @@
+@import "../../../styles.scss";
+.radio-group {
+    display: inline-flex;
+    flex-direction: column;
+  }
+  
+.radio-button {
+    flex: 1;
+    margin: 5px;
+}
+  
+.selected-value {
+    margin: 15px 0;
+}
+.button-group{
+    display: flex;
+}
+
+.btn{
+    background-color: $secondary;
+    color: white;
+}

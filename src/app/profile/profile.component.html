@@ -1,0 +1,39 @@
+<div class="container">
+<mat-card class = "matcard">
+  <mat-card-header>
+    <mat-card-title>My Profile</mat-card-title>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+    <form [formGroup]="profileForm">
+      <mat-form-field>
+        <input placeholder="Email" matInput type="email" formControlName="email" >
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="User Name" matInput formControlName="username" >
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="Password" matInput type="password" formControlName="password">
+      </mat-form-field>
+      <mat-form-field>
+        <input placeholder="Name" matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Phone" formControlName="phone">
+      </mat-form-field>
+      <p>Gender</p>
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="M">Male</mat-radio-button>
+        <mat-radio-button value="F">Female</mat-radio-button>
+      </mat-radio-group>
+    <br/>
+      <mat-form-field>
+        <input matInput placeholder="Profile Picture URL" type="url" formControlName="picture">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+      <mat-slide-toggle (change)="toggleEdit($event)">Edit</mat-slide-toggle>
+    <button class="action-btn" mat-stroked-button (click)="editUser()" [disabled]="isDisabled">Edit</button>
+  </mat-card-actions>
+</mat-card>
+</div>

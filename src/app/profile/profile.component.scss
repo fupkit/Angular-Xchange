@@ -1,0 +1,27 @@
+@import "../../styles.scss";
+.mat-dialog-actions{
+    margin-bottom: -15px !important;
+}
+mat-form-field {
+    width: 80%;
+    margin: 15px
+}
+mat-card-actions{
+    margin: 15px
+}
+.mat-stroked-button{
+    color: $secondary;
+}
+.matcard{
+    margin: 30px;
+    width: 95%;
+}
+.container{
+    display: flex;
+    justify-content: center;
+}
+.action-btn{
+    float: right;
+    background-color: $secondary;
+    color: white;
+}

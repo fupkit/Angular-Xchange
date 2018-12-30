@@ -1,0 +1,30 @@
+<form [formGroup]="regForm">
+
+  <mat-form-field>
+    <input placeholder="Email" matInput type="email" formControlName="email">
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="User Name" matInput formControlName="username">
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Password" matInput type="password" formControlName="password">
+  </mat-form-field>
+  <mat-form-field>
+    <input placeholder="Name" matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Phone" type="number" formControlName="phone">
+  </mat-form-field>
+  <p>Gender</p>
+  <mat-radio-group formControlName="gender">
+    <mat-radio-button value="M">Male</mat-radio-button>
+    <mat-radio-button value="F">Female</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field>
+    <input matInput placeholder="Profile Picture URL" type="url" formControlName="picture">
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-stroked-button (click)="register()">Register</button>
+  </div>
+</form>

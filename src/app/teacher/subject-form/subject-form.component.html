@@ -1,0 +1,25 @@
+<form [formGroup]="subjectForm">
+  <h4>My Registered Skills: </h4>
+  <mat-list class="formList">
+    <mat-list-item *ngFor="let item of getRegControls(); let i=index" role="listitem">{{item.value.subject_name}}
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+  <div class="regSub">
+    <h4>Register New Skills: </h4>
+    <mat-form-field>
+      <mat-select matNativeControl required formControlName="newSubject">
+        <mat-option *ngFor="let item of getUnRegControls(); let i=index" value="{{item.value.subject_id}}">{{item.value.subject_name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field *ngIf="subjectForm.value.newSubject">
+      <input matInput required formControlName="level" placeholder="Skill Level">
+    </mat-form-field>
+    <mat-form-field *ngIf="subjectForm.value.newSubject">
+      <input matInput required formControlName="cph" placeholder="Charge Per Hour">
+    </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-stroked-button (click)="action()">Register</button>
+    </div>
+  </div>
+</form>

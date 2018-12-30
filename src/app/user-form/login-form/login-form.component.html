@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm">
+  <p>User Name: </p>
+  <mat-form-field>
+    <input matInput formControlName="username">
+  </mat-form-field>
+  <p>Password: </p>
+  <mat-form-field>
+    <input matInput type="password" formControlName="password">
+  </mat-form-field>
+    <div mat-dialog-actions>
+      <button mat-stroked-button (click)="login()">Login</button>
+    </div>
+</form>
