@@ -12,6 +12,8 @@ import { StudentRegDialogComponent } from '../student-reg-dialog/student-reg-dia
 })
 export class StudentComponent implements OnInit {
   tutors: [];
+  search = false;
+  searchName = '';
 
   constructor(
     public dialog: MatDialog,
@@ -20,21 +22,8 @@ export class StudentComponent implements OnInit {
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    let token = this.share.getToken();
-    this.validateStudent(token);
-    this.service.getAllTutor(token).subscribe(res => {
-      // console.log(res);
-      let a = JSON.stringify(res);
-      let r = JSON.parse(a);
-      if (r.result) {
-        this.tutors = r.tutors;
-        // console.log(this.tutors);
-      } else {
-        this.snackBar.open(r.message, null, {
-          duration: 2000
-        });
-      }
-    });
+    this.validateStudent();
+    this.searchAll();
   }
 
   appoint(tutor) {
@@ -50,16 +39,17 @@ export class StudentComponent implements OnInit {
     });
   }
 
-  validateStudent(token) {
-    this.service.validateStudent(token).subscribe(res=>{
+  validateStudent() {
+    let token = this.share.getToken();
+    this.service.validateStudent(token).subscribe(res => {
       let temp = JSON.stringify(res);
       let r = JSON.parse(temp);
-      if(!r.result) {
+      if (!r.result) {
         const dialogRef = this.dialog.open(StudentRegDialogComponent, {
           width: '600px',
           data: {}
         });
-    
+
         dialogRef.afterClosed().subscribe(result => {
           console.log(result);
         });
@@ -69,12 +59,54 @@ export class StudentComponent implements OnInit {
 
   like(tutor_id) {
     let token = this.share.getToken();
-    this.service.likeTutor(token, tutor_id).subscribe(res=> {
+    this.service.likeTutor(token, tutor_id).subscribe(res => {
       console.log(res);
-      this.ngOnInit();
+      if(this.search) {
+        this.searchByName(this.searchName);
+      } else {
+        this.ngOnInit();
+      }
+      
     })
   }
+  searchTutor(value) {
+    this.searchName = value;
+    if (this.searchName === '') {
+      this.search = false;
+    } else {
+      this.search = true;
+    }
+    this.searchByName(this.searchName);
+  }
 
+  searchByName(name) {
+    let token = this.share.getToken();
+    this.service.searchTutorByName(token, name).subscribe(res => {
+      let temp = JSON.stringify(res);
+      let r = JSON.parse(temp);
+      this.snackBar.open(r.message, null, {
+        duration: 2000
+      });
+      if (r.result) {
+        this.tutors = r.tutors;
+      }
+    });
+  }
 
-
+  searchAll(){
+    let token = this.share.getToken();
+    this.service.getAllTutor(token).subscribe(res => {
+      // console.log(res);
+      let a = JSON.stringify(res);
+      let r = JSON.parse(a);
+      if (r.result) {
+        this.tutors = r.tutors;
+        // console.log(this.tutors);
+      } else {
+        this.snackBar.open(r.message, null, {
+          duration: 2000
+        });
+      }
+    });
+  }
 }

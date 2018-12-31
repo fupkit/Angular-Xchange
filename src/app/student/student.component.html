@@ -1,4 +1,8 @@
 <mat-card class=container>
+  <mat-form-field style="width:100%;">
+    <input class="search-bar" matInput type="search" (keyup.enter)="searchTutor($event.target.value)" placeholder="Search">
+    <mat-icon>search</mat-icon>
+  </mat-form-field>
   <mat-card-header>
     <mat-card-title>Teachers</mat-card-title>
   </mat-card-header>
@@ -20,9 +24,8 @@
         </mat-list>
       </mat-card-content>
       <mat-card-actions>
-        <button class="card-btn" mat-button
-        matBadge="{{item.rating}}" matBadgePosition="before" matBadgeColor="accent" 
-        (click)="like(item.tutor_id)">LIKE</button>
+        <button class="card-btn" mat-button matBadge="{{item.rating}}" matBadgePosition="before" matBadgeColor="accent"
+          (click)="like(item.tutor_id)">LIKE</button>
         <button class="card-btn" mat-button>SHARE</button>
         <button class="card-btn" mat-button (click)="appoint(item)">Make Appointment</button>
       </mat-card-actions>

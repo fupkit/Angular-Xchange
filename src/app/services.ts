@@ -180,4 +180,14 @@ export class Service {
         return this.http.post(this.basePath + 'userService.php?req=updateUser&token='+token, params);
     }
 
+    searchTutorByName(token, name) {
+        let params = new HttpParams()
+        .set('name', name)
+        .set('req', 'searchTutorByName')
+        .set('token', token);
+        return this.http.get(this.basePath + 'tutorService.php', {
+            params: params
+        });
+    }
+
 }
